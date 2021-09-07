@@ -1,37 +1,36 @@
 package com.htu.project;
  
-
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
-public class SecurityConfig extends  WebSecurityConfigurerAdapter implements ApplicationContextAware 
-{
-    // Details omitted for brevity
-    
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-           .csrf().disable();
-    }
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	AuthenticationSuccessHandler successHandler;
+	
+	@Override
+	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.inMemoryAuthentication()
+			.withUser("user").password("{noop}password").roles("USER")
+			.and()
+			.withUser("secretary").password("{noop}password").roles("ADMIN");
+	}
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		  auth.inMemoryAuthentication()
-		  .withUser("doctor")
-		  .password("{noop}cei@5!")
-		  .roles("admin");
-////		  .and()
-////		  .withUser("user")
-//		  .password("{noop}Ahm@d!@#@!")
-//		  .roles("user");
-		  	
-
-    // Used by spring security if CORS is enabled.
+	public void configure(HttpSecurity http) throws Exception {
+		http
+			.csrf().disable()
+			.authorizeRequests()
+			.antMatchers("/user").hasAnyRole("USER")
+			.antMatchers("/secretary").hasAnyRole("ADMIN")
+			.and().formLogin().loginPage("/login")
+				.successHandler(successHandler)
+			.permitAll()
+			.and().logout();
 	}
-}
-	
+}	

@@ -21,12 +21,8 @@ public class HomeController {
 		model.addAttribute("patients", s);
 		return "home";
 	}
-	@GetMapping ("ReservationAppointment")
-	public String reservation (){
-		return"ReservationAppointment";
-		
-		
-	}
+
+	
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		return new ModelAndView("login");

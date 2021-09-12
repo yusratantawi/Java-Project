@@ -1,0 +1,82 @@
+body{
+	
+	background: lightskyblue;
+}
+.hero-plain-navbar.no-bg {
+	background: transparent !important;
+	background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.hero-plain-navbar .navbar-expand-md .navbar-nav .nav-link {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.hero-plain-navbar .navbar-nav {
+	font-size: 16px;
+	color: rgba(24, 24, 24, 0);
+	font-weight: 600;
+}
+
+.card-signin-simple {
+	border: 0;
+	border-radius: 1rem;
+	box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+
+.card-signin-simple .card-title {
+	margin-bottom: 2rem;
+	font-weight: 300;
+	font-size: 1.5rem;
+}
+
+.card-signin-simple .card-img-left {
+	width: 45%;
+	undefined: undefined;
+	background: scroll center url('https://source.unsplash.com/VOpJTnP6S9g/414x512');
+	background-size: cover;
+}
+
+.card-signin-simple .card-body {
+	padding: 2rem;
+}
+
+.form-signin-simple {
+	width: 100%;
+}
+
+.form-signin-simple .btn {
+	font-size: 80%;
+	border-radius: 5rem;
+	letter-spacing: .1rem;
+	font-weight: bold;
+	padding: 1rem;
+	transition: all 0.2s;
+}
+
+.btn-google {
+	color: white;
+	background-color: #ea4335;
+}
+
+.btn-facebook {
+	color: white;
+	background-color: #3b5998;
+}
+
+@media (max-width: 800px) {
+	.hero-simple .display-4 {
+		font-size: 38px;
+	}
+
+	.hero-plain-navbar.no-bg {
+		background: #f6f6f6 !important;
+	}
+}
+
+@media (max-width: 480px) {
+	.hero-simple .display-4 {
+		font-size: 32px;
+	}
+}

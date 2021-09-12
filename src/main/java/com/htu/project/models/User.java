@@ -20,6 +20,7 @@ public class User {
 	public void setUserId(Integer user_id) {
 		this.userId = user_id;
 	}
+	
 	public String getUserName() {
 		return userName;
 	}

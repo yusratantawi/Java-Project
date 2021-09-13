@@ -22,7 +22,6 @@ public  Visits getVisitById( Integer id ) {
 	Optional<Visits> visitOptional = visitRepo.findById(id);
 	if(visitOptional.isPresent()) {
 		return visitOptional.get();
-		
 	}
 	throw new ResponseStatusException(
 			  HttpStatus.NOT_FOUND, "entity not found"

@@ -20,7 +20,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.withUser("secretary").password("{noop}password").roles("ADMIN");
 	}
-	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http
